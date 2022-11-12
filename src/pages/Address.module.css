@@ -1,0 +1,28 @@
+.box{
+    width: 50vw;
+    height: 4ovh;
+    /* border: 1px solid red; */
+    margin: auto;
+    text-align: center;
+    margin-top: 5vh;
+}
+.box input{
+    width: 100%;
+    padding: 2rem;
+  
+    font-size: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+.box button{
+    width: 20vw;
+    height: 5vh;
+    margin-top: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+   
+   
+    background-color: slategray;
+    color: white;
+    border: 0px;
+    /* border-radius: 10px; */
+}
