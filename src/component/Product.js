@@ -5,13 +5,13 @@ import { productList } from "../constant";
 import { Grid } from "@mui/material";
 import { Box } from "@mui/system";
 // import { Context } from "../context/Context";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import { cartAction } from "../store/index";
 import { Link } from "react-router-dom";
 //console.log(cartAction)
 const Product = () => {
   const dispatch = useDispatch();
-  const counter=useSelector(state=>console.log(state))
+  
 
   const cartHandler = (item) => {
 

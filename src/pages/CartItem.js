@@ -9,23 +9,30 @@ import { Link } from "react-router-dom";
 const CartItem = () => {
   const dispatch = useDispatch();
   const cartData = useSelector((state) => state.cart);
-  const price = useSelector((state) => state.totalPrice);
-
+  // const price = useSelector((state) => state.totalPrice);
 
   const removeHandler = (item) => {
     dispatch(cartAction.removeItem(item));
     //console.log(item)
   };
-  const decreamentHandler=(item)=>{
-    dispatch(cartAction.decrementQuantity(item))
-    console.log(item)
+  const decreamentHandler = (item) => {
+    dispatch(cartAction.decrementQuantity(item));
+  };
+  //***********for total price********* */
+  const lsData = JSON.parse(localStorage.getItem("cartItems"));
+
+  let sum = 0;
+  for (let i = 0; i < lsData.length; i++) {
+    let x = +lsData[i].currentPrice;
+
+    let y = +lsData[i].quantity;
+    sum += x * y;
   }
+
   return (
     <>
-      
       <div>
         {cartData.map((ele, index) => {
-          
           return (
             <div key={index} className={classes.cart}>
               <img src={ele.productImage} alt="Error" />
@@ -42,14 +49,14 @@ const CartItem = () => {
                 <div>
                   <button
                     style={{ fontSize: "3rem", padding: "0rem 3rem 0rem 3rem" }}
-                    onClick={()=>decreamentHandler(ele)}
+                    onClick={() => decreamentHandler(ele)}
                   >
                     -
                   </button>
                   <span>{ele.quantity}</span>
                   <button
                     style={{ fontSize: "3rem", padding: "0rem 3rem 0rem 3rem" }}
-                    onClick={()=>dispatch(cartAction.addToCart(ele))}
+                    onClick={() => dispatch(cartAction.addToCart(ele))}
                   >
                     +
                   </button>
@@ -62,23 +69,24 @@ const CartItem = () => {
                   </Button>
                 </div>
               </div>
-            
             </div>
-            
           );
         })}
       </div>
       <div className={classes.cart2}>
-      <h3> Order Summary</h3>
-      <h4>Total amount to Pay = <strong >₹ {price}</strong></h4>
-      <Link to="/address" style={{textDecoration:'none'}}>
-      <div className={classes['buy_now']} >Buy Now</div>
-      </Link>
-      
-      <Link to="/" style={{textDecoration:'none'}}>
-      <div className={classes['countinue_shopping']}>Countinue Shopping</div>
-      </Link>
-    
+        <h3> Order Summary</h3>
+        <h4>
+          Total amount to Pay = <strong>₹ {sum}</strong>
+        </h4>
+        <Link to="/address" style={{ textDecoration: "none" }}>
+          <div className={classes["buy_now"]}>Buy Now</div>
+        </Link>
+
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <div className={classes["countinue_shopping"]}>
+            Countinue Shopping
+          </div>
+        </Link>
       </div>
     </>
   );

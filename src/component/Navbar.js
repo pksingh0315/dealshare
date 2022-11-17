@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import classes from "./Navbar.module.css";
 import Button from "@mui/material/Button";
@@ -14,9 +14,10 @@ import { useSelector } from "react-redux";
 const Navbar = () => {
   const [open, setOpen] = React.useState(false);
   const [openDrawer, setOpenDrawer] = useState(false);
-
-  const item = useSelector((state) => state.totalQuantity);
-
+  // const item = useSelector((state) => state.totalQuantity);
+  const cartLength=useSelector(state=>state.cart.length)
+  
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -24,6 +25,9 @@ const Navbar = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+
+
   return (
     <>
       <div className={classes.navbar}>
@@ -59,7 +63,7 @@ const Navbar = () => {
 
      
         <div className={classes['cart_length']}>
-        <h1 > {item} </h1>
+        <h1 > {cartLength} </h1>
         </div>
         
       </div>
