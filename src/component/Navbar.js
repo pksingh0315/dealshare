@@ -39,10 +39,10 @@ const Navbar = () => {
           />
         </div>
         <div className={classes.dealShare_logo}>
-          <img
+          {/* <img
             src="https://d3hoz38eq91v8w.cloudfront.net/DSLogo/ds_logo_web.png"
             alt="error"
-          />
+          /> */}
         </div>
         <div className={classes.input_search}>
           <div className={classes.search}>
